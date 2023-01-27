@@ -1,0 +1,8 @@
+﻿license: Freeware
+link: https://www.fontspace.com/pixel-cowboy-font-f21467
+
+license: Freeware, commercial use requires donation
+link: https://www.fontspace.com/pixel-musketeer-font-f18097
+
+license: Public Domain
+link: https://www.fontspace.com/public-pixel-font-f72305
