@@ -1,0 +1,92 @@
+@font-face {
+  font-family:"PixelCowboy";
+  src: url("Fonts/PixelCowboy-l7we.ttf");
+  font-family:"PixelPublic";
+  src: url("Fonts/PublicPixel-z84yD.ttf");
+  font-family:"OEGPR1";
+  src: url("Fonts/OldEnglishGothicPixelRegular-gx1jp.otf");
+  font-family:"OEGPR2"; 
+  src:url("Fonts/OldEnglishGothicPixelRegular-ow2Bo.ttf");
+  font-family:"ScarletDevil"; 
+  src:url("Fonts/ScarletDevilPixelScript-0Vjr.ttf");
+
+}
+
+html {
+  background-color: #201f1d;
+  /*background-color: #d9c7b2;*/
+}
+
+body {
+  background-color: #d9c7b2;
+}
+body.font-loaded {
+  background-color: #15bfa2;
+}
+
+#container {
+  position: absolute;
+  border: 5px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1348px;
+  height: 600px;
+  display: grid;
+  grid-template-areas: "left  middle right";
+  background-color: #d9c7b2;
+}
+
+#canvas1 {
+  margin-top: -5px;
+  border: 5px solid #b56c4e ;
+  width: 1048px;
+  height: 600px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background-color: #ffffff;
+}
+
+#leftbar {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  border: 5px solid #18090b;
+  background-color:#290f13 ;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+/*
+
+attempted colors :
+canvas1 border:
+#b56c4e
+#d9c7b2
+
+
+background:
+#e1bda2
+
+side bars :
+#623436
+#290f13 
+
+*/
+
+
+#rightbar {
+  display: inline-flex;
+  flex-direction: column;
+  width: 140px;
+  align-items: center;
+  border: 5px solid #18090b;
+  background-color: #290f13 ;
+  margin-top: -5px;
+}
+#RightBarcanvas {
+  width: 140px;
+  height: 600px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

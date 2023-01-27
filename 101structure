@@ -1,0 +1,35 @@
+loading.js should contain everything that needs to be initialized
+
+Folder Fonts : contain the fonts
+Folder Images : contain the Images
+Folder Licenses: contain the Licenses
+Folder Script : contain most of the .js files running the game
+Folder Sounds : contain the Sounds
+
+index.html is minimum and call the different scripts
+style.css is also minimum and style only the containers
+
+
+loading.js need to be the first script called
+testfile.js is to test piece of code quickly
+Dump.js is to put piece of deprecated code that i want to keep just in case but also move from a file
+
+
+
+Folder Scripts:
+
+Dataloading :
+Scripts to fetch the images sounds and other things on the file system
+
+Objects :
+Scripts containing class definitions for game objects
+
+Scenes :
+Scripts defining a particular scene, like the main menu, the map editor, the character selection screen
+
+TimeManagement :
+not in use yet, supposed to host the scripts used to manage the execution flow
+
+UIScript:
+Scripts taking care of the interface and the User input
+inpulogic.js need to be reworked

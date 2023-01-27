@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Cmpatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale-1.0" />
+    <title>Goblin Disturbing Wildlife</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="leftbar">
+        <h3>Left bar</h3>
+      </div>
+      <canvas id="canvas1"></canvas>
+      <div id="rightbar">
+        <canvas id="RightBarcanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- initial loading for variable and environment  -->
+    <script src="loading.js"></script>
+    <script src="Mathfunctions.js"></script>
+    <script src="Scripts/TimeManagement/TmeManagement.js"></script>
+
+    <!-- sound and images loading, reference to file system change happen in those -->
+
+    <script src="Scripts/Dataloading/ButtonsData.js"></script>
+    <script src="Scripts/Dataloading/RightBarData.js"></script>
+    <script src="Scripts/Dataloading/TileData.js"></script>
+    <script src="Scripts/Dataloading/AnimalsData.js"></script>
+    <script src="Scripts/Dataloading/CharacterData.js"></script>
+    <script src="Scripts/Dataloading/PlantsData.js"></script>
+    <script src="Scripts/Dataloading/SoundaData.js"></script>
+    <script src="Scripts/TimeManagement/SoundManagement.js"></script>
+    <script src="Scripts/Dataloading/testmap.js"></script>
+
+    <!-- class & self contained logic loading, built on previous datas -->
+    <!-- functions that can be called by an element depending on context -->
+    <!-- UI first-->
+    <script src="Scripts/UIScript/Buttons.js"></script>     
+
+    <!-- Then generic game objects-->
+    <script src="Scripts/Objects/Tile.js"></script>
+    <script src="Scripts/Objects/Tileblock.js"></script>
+    <script src="Scripts/Objects/Animals/Animals.js"></script>
+    <script src="Scripts/Objects/Animals/AnimalsAI.js"></script>
+    <script src="Scripts/Objects/Character.js"></script>
+    <script src="Scripts/Objects/Plants.js"></script>
+
+    <!-- Then context specific  later-->
+    <script src="Scripts/Scenes/MapEditor/MapEditorfunctions.js"></script>
+    <script src="Scripts/Scenes/CharacterSelection/CharacterSelectionfunctions.js"></script>
+    <script src="Scripts/Scenes/ModeSelection/ModeSelectionfunctions.js"></script>
+
+    <!--Then Scenes aka specific context host-->
+    <script src="Scripts/Scenes/MapEditor/MapEditor.js"></script>
+    <script src="Scripts/Scenes/CharacterSelection/CharacterSelection.js"></script>
+    <script src="Scripts/Scenes/ModeSelection/ModeSelection.js"></script>
+
+
+    <!-- UI element that interact with previous things need to be loaded almost last-->
+    <script src="Scripts/UIScript/RightBar/RightBarfunctions.js"></script>
+    <script src="Scripts/UIScript/RightBar/RightBar.js"></script>
+
+
+    <!-- event listener for the game -->
+    <script src="Scripts/UIScript/Inputlogic.js"></script>
+
+    <!-- when everything is setup simple file should process readable logic 
+    <script src="script.js"></script>
+
+    following is example of how to write some html from javascript which can be used to hide the long list of of script
+    or subdivide it in another script to make it easier to create a folder structure for loading part
+
+    i was told it is considered unsecured practice    -->
+    
+    <div id="new">
+    </div>
+    <script>
+      var tag = document.createElement("script");
+      var source = "script.js";
+      tag.src=source;
+      var element = document.getElementById("new");
+      element.appendChild(tag);
+    </script>
+
+
+    
+
+  </body>
+</html>
+
+
