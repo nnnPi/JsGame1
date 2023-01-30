@@ -1,3 +1,6 @@
+// some function to edit the map shown in the editor
+// most of them are called from right bar
+
 //describe how the brush function
 function brushmodefunction(e) {
   // supposed to be true at all time
@@ -126,7 +129,7 @@ function cleanupsquaremode() {
         tiletype: {
           ...tileEditor[element].forwhat.tiletype,
           tilesheet: sheetselectedforeditor,
-          tilekey: tiletopaint,
+          tilekey:  MapEditor.tiletopaint,
         },
       };
     });
@@ -197,14 +200,14 @@ function morphclickedtile() {
   if (
     tileEditor[clickedtile.Ide].forwhat.tiletype.tilesheet !==
       sheetselectedforeditor ||
-    tileEditor[clickedtile.Ide].forwhat.tiletype.tilekey !== tiletopaint
+    tileEditor[clickedtile.Ide].forwhat.tiletype.tilekey !==  MapEditor.tiletopaint
   ) {
     tileEditor[clickedtile.Ide].forwhat = {
       ...tileEditor[clickedtile.Ide].forwhat,
       tiletype: {
         ...tileEditor[clickedtile.Ide].forwhat.tiletype,
         tilesheet: sheetselectedforeditor,
-        tilekey: tiletopaint,
+        tilekey:  MapEditor.tiletopaint,
       },
     };
     customrepeatplay(UIsmalltick2sound);
@@ -219,13 +222,14 @@ function morphselection(tileArray) {
       tiletype: {
         ...tileEditor[tileArray[i].Ide].forwhat.tiletype,
         tilesheet: sheetselectedforeditor,
-        tilekey: tiletopaint,
+        tilekey:  MapEditor.tiletopaint,
       },
     };
   }
 }
 
 // probably no longer necessarry due to code catching missmatch at the sheet selection moment
+// edit : still shows up sometimes
 function checktilekeymismatchandreplaceerronous(
   tileArray,
   TileSet,
@@ -258,12 +262,11 @@ function checktilekeymismatchandreplaceerronous(
 }
 
 // used to make the numbers for tiles overlay drawn last
-function prerenderingselection(tileArray) {
+function prerenderingselection() {
   if (isOverlayactive === true) {
     printsheetoverlay(sheetselectedforeditor, TileColumn);
   }
 }
-
 // adds a semi transparent layer over the selected tiles
 function drawrenderedselection(tileArray) {
   ctx.save();
@@ -297,8 +300,6 @@ function clearselectedtiles(selectedtile, tileArray) {
     };
   }
 }
-
-// some function to call for possible actions allowed from right bar
 
 // let the user input a value to select the sprite sheet ( used in mapEditor)
 function LetUserChooseFromArrayforsheet(array, string) {
@@ -563,7 +564,7 @@ function clicktopastetileblock(
   }
 }
 
-// paste feature 2
+// paste feature 2 layered
 function clicktopastetileblockonlayer(
   clickevent,
   destinationarray,
@@ -616,22 +617,34 @@ function clicktopastetileblockonlayer(
         newspan[i][1].length >= TileRow
       ) {
         // ignore
-        console.log("something too big was trimmed to fit the screen")
+        // edit : doesn't work => pasting on an edge overlap with the other edge
+        console.log("something too big was trimmed to fit the screen");
       }
       // associate with the lookup table
       // at the correct layer
       //
       else {
         let id = newspan[i][0] + newspan[i][1] * TileColumn;
-        destinationarray[id]["layer"] = {
-          [`${destinationlayer}`]: [
-            blocktodeploy.lookup[i][0],
-            blocktodeploy.lookup[i][1],
-          ],
-        };
-       
+
+        if (destinationarray[id]["layer"] === undefined) {
+          destinationarray[id]["layer"] = {
+            [`${destinationlayer}`]: [
+              blocktodeploy.lookup[i][0],
+              blocktodeploy.lookup[i][1],
+            ],
+          };
+        } else {
+          destinationarray[id]["layer"] = Object.assign(
+            destinationarray[id]["layer"],
+            {
+              [`${destinationlayer}`]: [
+                blocktodeploy.lookup[i][0],
+                blocktodeploy.lookup[i][1],
+              ],
+            }
+          );
+        }
       }
     }
   }
-  
 }

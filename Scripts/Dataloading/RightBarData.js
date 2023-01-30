@@ -7,6 +7,29 @@ const CANVAS_WIDTH_RB = (RightBarcanvas.width = 140); // should be the same as v
 const CANVAS_HEIGHT_RB = (RightBarcanvas.height = 600); // should be the same as value in style.CSS
 
 // define text for buttons
+// starting with static buttons : 
+const UParrow = {
+  string: " ",
+  xoffset: 0,
+  static: "yes0",
+};
+const Downarrow = {
+  string: " ",
+  xoffset: 0,
+  static: "yes1",
+};
+const RBbutton20SheetTileDisplay = {
+  string: " ",
+  xoffset: 0,
+  static: "yes3",
+};
+const RBbutton21LayerDisplay ={
+  string: " ",
+  xoffset: 0,
+  static: "yes4",
+};
+
+
 const RBbutton1SelectSpriteSheet = {
   string: "Select SpriteSheet",
   xoffset: 0,
@@ -93,23 +116,6 @@ const RBbutton19ChangeDestinationLayer = {
   xoffset: 0,
 };
 
-const UParrow = {
-  string: " ",
-  xoffset: 0,
-  static: "yes0",
-};
-
-const Downarrow = {
-  string: " ",
-  xoffset: 0,
-  static: "yes1",
-};
-
-const RBbutton20SheetTileDisplay = {
-  string: " ",
-  xoffset: 0,
-  static:"yes3",
-};
 
 
 // buttonstyledefinition
@@ -170,6 +176,27 @@ const TwoSideDispRBtstyle = {
   fillStyle: "#623436",
   font: "14px Impact",
   fontWeight: 50,
-  posx: [5,70],
+  posx: [5, 70],
   posy: 0,
 };
+
+// buttonobjectdefinition
+const DispRB = {
+  img: buttons112px,
+  sx: 0,
+  sy: 321,
+  sw: 112,
+  sh: 31,
+  pw: 138,
+  ph: 27,
+};
+
+// buttonstyledefinition
+const DispRBtstyle = {
+  fillStyle: "#623436",
+  font: "14px Impact",
+  fontWeight: 50,
+  posx: [5, 70],
+  posy: 0,
+};
+

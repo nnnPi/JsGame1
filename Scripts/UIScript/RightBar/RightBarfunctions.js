@@ -1,3 +1,5 @@
+// function used to create an object containing the static buttons
+// => navigation arrow and display
 function makestaticlistRB(i) {
   const staticfunctionlistRB = [
     {
@@ -5,8 +7,7 @@ function makestaticlistRB(i) {
       type: verticalArrowRB,
       text: UParrow,
       action: function () {
-        movebutton1down()
-        ;
+        movebutton1down();
       },
     },
     {
@@ -22,8 +23,16 @@ function makestaticlistRB(i) {
       type: TwoSideDispRB,
       text: RBbutton20SheetTileDisplay,
       action: function (clicked) {
-        console.log('yo');
-        tilesheetchoice (clicked)
+       tilesheetchoice(clicked);
+      },
+    },
+    {
+      style: DispRBtstyle,
+      type: DispRB,
+      text: RBbutton21LayerDisplay,
+      action: function (clicked) {
+        layerelementchoice(clicked);
+
       },
     },
   ];
@@ -40,19 +49,7 @@ function makestaticlistRB(i) {
     return staticfunctionlistRB[i].action();
   }
 }
-
-function tilesheetchoice (clicked) {
-
-  console.log(clicked)
-if (clicked.x>60) { SelectTileKey()}
-else {SelectTileSheet()}
- 
-  
-}
-
-
-
-// switcher
+// function used to create an object containing the buttons whose position is defined by the navigation arrow
 function makefunctionlistRB(i) {
   const functionlistRB = [
     {
@@ -202,16 +199,9 @@ function makefunctionlistRB(i) {
       type: smallbuttonRB,
       text: RBbutton19ChangeDestinationLayer,
       action: function () {
-        MapEditor.destinationlayer =  changedestinationlayer();
-        console.log( MapEditor.destinationlayer)
+        MapEditor.destinationlayer = changedestinationlayer();
       },
     },
-
-
-
-
-
-    
   ];
   if (i === "init") {
     let result = [];
@@ -225,28 +215,57 @@ function makefunctionlistRB(i) {
     return functionlistRB[i].action();
   }
 }
+
+// The following functions are associated to a button
+// most of them call a function from the mapEditor when clicked
+// and also make sure to update the MapEditor object to reflect what is happening
+// example :
+//    MapEditor.RightBarTextButton[i].toggle = "no";
+//    isSelectorselected = false;
+
+
+
 // button 0 = static 0
 function movebutton1up() {
   MapEditor.RightBarTextButton.ident += 1;
   MapEditor.buttonsfunctionlist.push(MapEditor.buttonsfunctionlist.shift());
-  customrepeatplay(UIverticalnavsound)
+  customrepeatplay(UIverticalnavsound);
 }
 // button static 1
 function movebutton1down() {
   MapEditor.RightBarTextButton.ident -= 1;
   MapEditor.buttonsfunctionlist.unshift(MapEditor.buttonsfunctionlist.pop());
-  customrepeatplay(UIverticalnavsound)
+  customrepeatplay(UIverticalnavsound);
 }
+// button static 2
+function tilesheetchoice(clicked) {
+  if (clicked.x > 60) {
+    SelectTileKey();
+  } else {
+    SelectTileSheet();
+  }
+}
+// button static 3
+function layerelementchoice(clicked){
+  if (clicked.x > 60) {
+    console.log("not yet available");
+  } else {
+    MapEditor.destinationlayer = changedestinationlayer();
+  }
+  console.log(clicked);
+}
+
+
 
 // button 1 by default
 function SelectTileSheet() {
   customrepeatplay(UIticsound);
   let pick = LetUserChooseFromArrayforsheet(TileSet, " select a tilesheet");
-  if (TileSet[pick].length <= tiletopaint) {
+  if (TileSet[pick].length <=  MapEditor.tiletopaint) {
     alert(
       "you selected a spritesheet that doesn't contain the previously selected tile, it has been set to 0 instead"
     );
-    tiletopaint = 0;
+    MapEditor.tiletopaint = 0;
   } else {
     sheetselectedforeditor = pick;
   }
@@ -255,7 +274,7 @@ function SelectTileSheet() {
 // button 2 by default
 function SelectTileKey() {
   customrepeatplay(UIticsound);
-  tiletopaint = LetUserChooseFromArrayfortile(
+  MapEditor.tiletopaint = LetUserChooseFromArrayfortile(
     TileSet[sheetselectedforeditor],
     "select a tile"
   );
@@ -288,7 +307,6 @@ function morphselectionRB(selectedtile) {
 
 // button 7 by default
 function handlePaintTool() {
-  console.log(MapEditor.RightBarTextButton);
   isPaintorselected = true;
   MapEditor.RightBarTextButton[6].toggle = "yes";
   MapEditor.RightBarTextButton[10].toggle = "no";
@@ -296,7 +314,6 @@ function handlePaintTool() {
   MapEditor.RightBarTextButton[7].toggle = "no";
   isPasting = false;
   MapEditor.RightBarTextButton[15].toggle = "no";
-
   isDefininganchor = false;
   MapEditor.RightBarTextButton[14].toggle = "no";
   isPastingL = false;
@@ -458,7 +475,6 @@ function switchpastingmode() {
 }
 
 //button17 by default
-
 function changeclipboardelement(c) {}
 
 // button 18 by default
@@ -488,8 +504,7 @@ function switchpastingmodelayered() {
 }
 
 //button19 by default
-
 function changedestinationlayer() {
   destinationlayer = LetUserinputdestinationlayer(MapEditor.destinationlayer);
-  return destinationlayer
+  return destinationlayer;
 }

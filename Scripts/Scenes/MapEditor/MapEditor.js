@@ -18,11 +18,11 @@ document.addEventListener("MapEditorMode", (mem) => {
   tempclipboard = [];
   TileBlockList = [];
 
-  tiletopaint = 19;
-  sheetselectedforeditor = 2;
   tileEditor = [];
   let forwhat = {
     purpose: "mapeditor",
+    // 0:43 for transparent
+    // 0:11 for greengrass background
     tiletype: { tilesheet: 0, tilekey: 43 },
   };
   isPainting = false;

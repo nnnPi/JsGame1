@@ -3,7 +3,7 @@ document.addEventListener("MapEditorMode", (mem) => {
   // Prevent the call from ModeSelection to continue occuring once this script is active
   document.removeEventListener("click", GameModeselector, true);
   MapEditor = {};
-  MapEditor.destinationlayer = 20;
+
   // create an object associating some mapeditor functions to some buttons and their text
   MapEditor.RightBarTextButton = makefunctionlistRB("init");
   // create an object referencing the navigation button and their function
@@ -12,10 +12,12 @@ document.addEventListener("MapEditorMode", (mem) => {
   MapEditor.buttonsfunctionlist = makefunctionlistRB("objectlistplz");
   MapEditor.buttonsstaticlist = makestaticlistRB("objectlistplz");
   MapEditor.RightBarTextButton.ident = 0;
+  MapEditor.destinationlayer = 20;  
+  MapEditor.tiletopaint = 19;
+  sheetselectedforeditor = 2;
   MapEditor.rightbardrawnbuttons = [];
   MapEditor.numberofbuttontodraw =
     MapEditor.RightBarTextButton.length + MapEditor.RightBarstaticButton.length;
-  MapEditor.RBcomposition = [];
   fillbarwithsmallbutton(
     RightBarcanvas,
     MapEditor.buttonsfunctionlist,
